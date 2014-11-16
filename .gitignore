@@ -17,4 +17,6 @@
 
 .idea
 *.iml
+.ruby-version
+
 
