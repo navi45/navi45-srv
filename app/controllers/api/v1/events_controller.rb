@@ -4,7 +4,9 @@ class Api::V1::EventsController < ApplicationController
   # GET /api/v1/events
   # GET /api/v1/events.json
   def index
-    @api_v1_events = Api::V1::Event.all
+    @api_v1_events = Api::V1::Event.all.to_a
+
+    @api_v1_events.sort! { |a,b| a.location <=> b.location}
   end
 
   # GET /api/v1/events/1
