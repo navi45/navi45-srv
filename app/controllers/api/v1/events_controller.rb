@@ -6,7 +6,7 @@ class Api::V1::EventsController < ApplicationController
   def index
     @api_v1_events = Api::V1::Event.all.to_a
 
-    @api_v1_events.sort! { |a,b| a.location <=> b.location}
+    @api_v1_events.sort! { |a,b| b.location <=> a.location}
   end
 
   # GET /api/v1/events/1
