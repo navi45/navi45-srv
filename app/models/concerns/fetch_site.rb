@@ -6,7 +6,7 @@ require 'pp'
 
 module FetchSite
 
-  def fetch_minkei(url)
+  def minkei(url)
     r = RSS::Parser.parse(url)
     res = []
 
@@ -34,5 +34,9 @@ module FetchSite
       res << event
     }
     return res
+  end
+
+  def asahi_digital
+
   end
 end
