@@ -1,4 +1,4 @@
-class Api::V1::Event < ActiveRecord::Base
+class Event < ActiveRecord::Base
   extend FetchSite
 
   def self.minkei2db
@@ -6,7 +6,7 @@ class Api::V1::Event < ActiveRecord::Base
     url = "http://rss.rssad.jp/rss/minkei/tokyobay.xml"
     res = minkei(url)
     res.each do |r|
-      event = Api::V1::Event.new(r)
+      event = Event.new(r)
       event.save!
     end
 

@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20141115232821) do
 
-  create_table "api_v1_events", force: true do |t|
+  create_table "events", force: true do |t|
     t.string   "title"
     t.text     "desc"
     t.string   "location"

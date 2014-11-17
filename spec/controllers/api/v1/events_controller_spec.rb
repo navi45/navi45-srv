@@ -21,7 +21,7 @@ require 'rails_helper'
 RSpec.describe Api::V1::EventsController, :type => :controller do
 
   # This should return the minimal set of attributes required to create a valid
-  # Api::V1::Event. As you add validations to Api::V1::Event, be sure to
+  # Event. As you add validations to Event, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
     skip("Add a hash of attributes valid for your model")
@@ -33,20 +33,20 @@ RSpec.describe Api::V1::EventsController, :type => :controller do
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
-  # Api::V1::EventsController. Be sure to keep this updated too.
+  # EventsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
   describe "GET index" do
-    it "assigns all api_v1_events as @api_v1_events" do
-      event = Api::V1::Event.create! valid_attributes
+    it "assigns all api_v1_events as @events" do
+      event = Event.create! valid_attributes
       get :index, {}, valid_session
-      expect(assigns(:api_v1_events)).to eq([event])
+      expect(assigns(:events)).to eq([event])
     end
   end
 
   describe "GET show" do
     it "assigns the requested api_v1 as @api_v1" do
-      event = Api::V1::Event.create! valid_attributes
+      event = Event.create! valid_attributes
       get :show, {:id => event.to_param}, valid_session
       expect(assigns(:api_v1)).to eq(event)
     end
@@ -55,13 +55,13 @@ RSpec.describe Api::V1::EventsController, :type => :controller do
   describe "GET new" do
     it "assigns a new api_v1 as @api_v1" do
       get :new, {}, valid_session
-      expect(assigns(:api_v1)).to be_a_new(Api::V1::Event)
+      expect(assigns(:event)).to be_a_new(Event)
     end
   end
 
   describe "GET edit" do
     it "assigns the requested api_v1 as @api_v1" do
-      event = Api::V1::Event.create! valid_attributes
+      event = Event.create! valid_attributes
       get :edit, {:id => event.to_param}, valid_session
       expect(assigns(:api_v1)).to eq(event)
     end
@@ -69,28 +69,28 @@ RSpec.describe Api::V1::EventsController, :type => :controller do
 
   describe "POST create" do
     describe "with valid params" do
-      it "creates a new Api::V1::Event" do
+      it "creates a new Event" do
         expect {
           post :create, {:api_v1 => valid_attributes}, valid_session
-        }.to change(Api::V1::Event, :count).by(1)
+        }.to change(Event, :count).by(1)
       end
 
       it "assigns a newly created api_v1 as @api_v1" do
         post :create, {:api_v1 => valid_attributes}, valid_session
-        expect(assigns(:api_v1)).to be_a(Api::V1::Event)
+        expect(assigns(:api_v1)).to be_a(Event)
         expect(assigns(:api_v1)).to be_persisted
       end
 
       it "redirects to the created api_v1" do
         post :create, {:api_v1 => valid_attributes}, valid_session
-        expect(response).to redirect_to(Api::V1::Event.last)
+        expect(response).to redirect_to(Event.last)
       end
     end
 
     describe "with invalid params" do
       it "assigns a newly created but unsaved api_v1 as @api_v1" do
         post :create, {:api_v1 => invalid_attributes}, valid_session
-        expect(assigns(:api_v1)).to be_a_new(Api::V1::Event)
+        expect(assigns(:api_v1)).to be_a_new(Event)
       end
 
       it "re-renders the 'new' template" do
@@ -107,20 +107,20 @@ RSpec.describe Api::V1::EventsController, :type => :controller do
       }
 
       it "updates the requested api_v1" do
-        event = Api::V1::Event.create! valid_attributes
+        event = Event.create! valid_attributes
         put :update, {:id => event.to_param, :api_v1 => new_attributes}, valid_session
         event.reload
         skip("Add assertions for updated state")
       end
 
       it "assigns the requested api_v1 as @api_v1" do
-        event = Api::V1::Event.create! valid_attributes
+        event = Event.create! valid_attributes
         put :update, {:id => event.to_param, :api_v1 => valid_attributes}, valid_session
         expect(assigns(:api_v1)).to eq(event)
       end
 
       it "redirects to the api_v1" do
-        event = Api::V1::Event.create! valid_attributes
+        event = Event.create! valid_attributes
         put :update, {:id => event.to_param, :api_v1 => valid_attributes}, valid_session
         expect(response).to redirect_to(event)
       end
@@ -128,13 +128,13 @@ RSpec.describe Api::V1::EventsController, :type => :controller do
 
     describe "with invalid params" do
       it "assigns the api_v1 as @api_v1" do
-        event = Api::V1::Event.create! valid_attributes
+        event = Event.create! valid_attributes
         put :update, {:id => event.to_param, :api_v1 => invalid_attributes}, valid_session
         expect(assigns(:api_v1)).to eq(event)
       end
 
       it "re-renders the 'edit' template" do
-        event = Api::V1::Event.create! valid_attributes
+        event = Event.create! valid_attributes
         put :update, {:id => event.to_param, :api_v1 => invalid_attributes}, valid_session
         expect(response).to render_template("edit")
       end
@@ -143,14 +143,14 @@ RSpec.describe Api::V1::EventsController, :type => :controller do
 
   describe "DELETE destroy" do
     it "destroys the requested api_v1" do
-      event = Api::V1::Event.create! valid_attributes
+      event = Event.create! valid_attributes
       expect {
         delete :destroy, {:id => event.to_param}, valid_session
-      }.to change(Api::V1::Event, :count).by(-1)
+      }.to change(Event, :count).by(-1)
     end
 
-    it "redirects to the api_v1_events list" do
-      event = Api::V1::Event.create! valid_attributes
+    it "redirects to the events list" do
+      event = Event.create! valid_attributes
       delete :destroy, {:id => event.to_param}, valid_session
       expect(response).to redirect_to(api_v1_events_url)
     end

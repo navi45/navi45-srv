@@ -1,6 +1,6 @@
-class CreateApiV1Events < ActiveRecord::Migration
+class CreateEvents < ActiveRecord::Migration
   def change
-    create_table :api_v1_events do |t|
+    create_table :events do |t|
       t.string :title
       t.text :desc
       t.string :location
